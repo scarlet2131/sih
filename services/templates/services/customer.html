@@ -1,0 +1,77 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Read details(db)</title>
+    <meta charset="UTF-8">
+   
+    {% load static %}
+   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'esop/style.css' %}"/> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<style>
+        .padding-table-columns td
+        {
+            padding:0 10px 0 0; /* Only right padding*/
+        }
+    </style>
+
+</head>
+<body>
+	<nav class="navbar navbar">
+    <div class="container-fluid">
+
+        <!-- Header -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">Farmer's Portal</a>
+        </div>
+
+        <!-- Items -->
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="http://localhost:8000/site/">Product Details</a></li>
+                <li class=""><a href="http://localhost:8000/customer/">E-Commerce</a></li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+<br>
+<br>
+
+<table class="table table-bordered">
+    <tr>
+        <th>IMAGE</th>
+      <th>Crop</th>
+      <th>Quantity</th>
+      <th>Status</th>
+      <th>Date of Entry</th>
+      <th>Seller</th>
+    </tr>
+    {% if allDetail %}
+    {% for u in allDetail %}
+    <tr>
+    <td><img src=" {{u.img_crop}} " width="30%" /> </td>
+    <td>{{u.crop}}</td>
+    <td>{{u.quantity}}</td>
+    <td>{{u.status}}</td> 
+    <td>{{u.date_of_entry}}</td> 
+    <td>{{u.username}}</td>
+    <td><a class="btn btn-danger" href="{% url 'buy' %}">BUY</button></td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+	
+	<a class="btn btn-danger" href="{% url 'logout' %}">LOG OUT</button>
+</body>
+</html>
